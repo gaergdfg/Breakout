@@ -66,7 +66,6 @@ function draw() {
 }
 
 function resetGame(win) {
-    console.log("game resetted" + win);
     if(win) {
         bricksAmount = collumns * rows;
     }
@@ -75,22 +74,12 @@ function resetGame(win) {
             brick[row][col] = new Brick(col, row);
         }
     }
-    console.log(Math.pow(speedGrowth, level - 1), myBall.speed, Math.pow(scoreGrowth, level - 1), brick[1][1].value);
+    //console.log(Math.pow(speedGrowth, level - 1), myBall.speed, Math.pow(scoreGrowth, level - 1), brick[1][1].value);
 }
 
 function resetBall() {
     myBall = new Ball();
     myPaddle = new Paddle();
-}
-
-function generateValues() {
-    var y, x;
-    for(var i = 1; i < level; i++) {
-        y = parseInt(Math.random() * rows);
-        x = parseInt(Math.random() * collumns);
-        console.log(y, x, brick[y][x].value);
-        brick[y][x].value += 10;
-    }
 }
 
 function drawScore() {
@@ -106,10 +95,10 @@ function drawScore() {
 }
 
 $(document).bind('keydown', function(e) {
-    var x = e.keyCode || e.which;
-    if(x == 65)
+    var key = e.keyCode || e.which;
+    if(key == 65)
         direction = -1;
-    else if(x == 68)
+    else if(key == 68)
         direction = 1;
 });
 
